@@ -12,6 +12,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+log = logging.getLogger('tester.sub')
 
 class rag:
 
@@ -23,13 +24,13 @@ class rag:
         self.prepare_database()
         self.load_llm()
         self.initilised = True
-        logging.info("rag init complete!")
+        log.info("rag init complete!")
 
     def isInitialised(self):
         return self.initilised
 
     def load_data(self):
-        logging.info("Loading dataset...")
+        log.info("Loading dataset...")
         with open(self.file_path, "r") as file:
             data = file.read()
 
@@ -63,7 +64,7 @@ class rag:
 
     # TODO: fix for clean_db = False
     def prepare_database(self, clean_db=True):
-        logging.info("Preparing Chroma Client...")
+        log.info("Preparing Chroma Client...")
 
         self.chroma_client = chromadb.PersistentClient(path=self.db_dir)
 
@@ -91,7 +92,7 @@ class rag:
         )
 
     def load_llm(self):
-        logging.info("Loading LLM...")
+        log.info("Loading LLM...")
         model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
         tokenizer = AutoTokenizer.from_pretrained(model_id)
         lm_model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True)
@@ -142,7 +143,7 @@ class rag:
         if enableRAG:
             ctx_lookup = extract_keywords_tfidf(question)
         ext_prompt, ctxLen = self.generate_extended_prompt(question, ctx_lookup, results_to_use)
-        logging.info("Running user query with (enableRAG = " + str(enableRAG) + ")...")
+        log.info("Running user query with (enableRAG = " + str(enableRAG) + ")...")
         lm_response = self.pipe(ext_prompt)
         return lm_response[0]["generated_text"][ctxLen : ]
 
