@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Upload and Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-whateveryourintegrityvalueis" crossorigin="anonymous"> -->
+
+</head>
+<body>
+    <h1>Document Upload and Chat</h1>
+
+    <!-- RAG Toggle Button -->
+    <button id="toggleRAG">Enable RAG</button>
+
+    <!-- Document Upload Form -->
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput">
+        <button type="submit">Upload Document</button>
+    </form>
+
+    <div id="uploadResponse"></div>
+
+    <!-- Chat Interface -->
+    <div id="chatInterface">
+        <div id="chatLog"></div>
+        <input type="text" id="chatInput" placeholder="Type a message...">
+        <button id="sendMessage">Send</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-whateveryourintegrityvalueis" crossorigin="anonymous"></script> -->
+</body>
+</html>
