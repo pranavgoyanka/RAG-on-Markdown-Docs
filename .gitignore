@@ -56,7 +56,6 @@ MANIFEST
 *.local
 
 # Large files (e.g., datasets, models)
-data/
 models/
 *.h5
 *.hdf5
@@ -143,3 +142,6 @@ Thumbs.db
 # Environment variables
 .env
 .env.*
+
+**/db/*
+**/test_db/*

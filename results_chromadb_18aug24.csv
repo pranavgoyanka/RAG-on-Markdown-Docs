@@ -1,0 +1,72 @@
+﻿Question,RAG,No RAG
+How much RAM is needed for OmniFlow?,OmniFlow requires 4 GB RAM (8 GB recommended) for optimal performance.,OmniFlow requires at least 2GB of RAM to function optimally.
+"""What is OmniFlow used for?"",",OmniFlow is used for streamlining workflows and enhancing productivity in both individual and team environments.,"OmniFlow is a software tool used for managing and optimizing the performance of a network. It is designed to help network administrators monitor and analyze network traffic, identify bottlenecks, and optimize network performance. OmniFlow can be used for a variety of network management tasks, including load balancing, traffic shaping, bandwidth management, and network monitoring."
+"""What is the email id for OmniFlow support?"",",The email id for OmniFlow support is support-potato@omniflow.com.,OmniFlow support email id is support@omniflow.com.
+"""How to make a request to /tasks?"",","To make a request to /tasks, you can use the `requests` library in Python. Here's an example:
+
+  ```python
+  import requests
+
+  # Define the URL and parameters for the request
+  url = 'https://api.omniflow.com/tasks'
+  params = {
+    'project_id': 'your_project_id',
+    'task_name': 'your_task_name',
+    'assigned_to': 'your_assigned_user_id'
+  }
+
+  # Make the request and parse the response
+  response = requests.post(url, params=params)
+  response_json = response.json()
+  print(response_json)
+  ```
+  
+  This code will make a POST request to the `/tasks` endpoint with the `project_id`, `task_name`, and `assigned_to` parameters. The response will be parsed into a JSON object and printed to the console.","To make a request to /tasks, you can use the `GET` method and the URL `/tasks` in the `url` parameter. Here's an example:
+  
+  ```python
+  from flask import request
+  from flask_restful import Resource
+  
+  class Tasks(Resource):
+      def get(self):
+          tasks = []
+          for task in get_tasks():
+              tasks.append(task)
+          return tasks
+  
+  def get_tasks():
+      return [
+          {""id"": 1, ""title"": ""Task 1""},
+          {""id"": 2, ""title"": ""Task 2""},
+          {""id"": 3, ""title"": ""Task 3""},
+      ]
+  
+  app = Flask(__name__)
+  app.config['DEBUG'] = True
+  app.register_blueprint(Tasks)
+  
+  class Task(Resource):
+      def get(self, id):
+          task = get_task(id)
+          if task is None:
+              return {'error': 'Task not found'}, 404"
+"""What are some best practices for OmniFlow?"",","1. Regular Backups: Ensure your data is regularly backed up to avoid loss.
+  2. User Permissions: Manage user roles and permissions carefully to maintain security.
+  3. Stay Updated: Regularly check for software updates to access new features and improvements.
+  4. Collaboration: Use the chat feature for instant communication with team members.
+  5. File Sharing: Upload and share documents, images, and other files directly within the project.
+  6. Task Management: Organize, prioritize, and track tasks with customizable workflows.
+  7. Collaboration Tools: Real-time messaging, file sharing, and integrated video conferencing.
+  8. Data Analytics: Built-in tools for generating reports and visualizing data trends.
+  9. Third-Party Integrations: Seamless integration with popular tools like Slack, Google Workspace, and Microsoft Teams.
+  10. Cross-Platform Compatibility: Available on Windows, macOS, Linux, iOS, and Android.","  OmniFlow is a powerful and flexible tool for managing and optimizing your website's performance. Here are some best practices for using OmniFlow:
+  
+  1. Set up your website's performance goals: Before you start using OmniFlow, set up your website's performance goals. This will help you track your progress and identify areas for improvement.
+  
+  2. Use the dashboard: The OmniFlow dashboard is a great place to start. It provides a quick overview of your website's performance, including metrics like page load time, bounce rate, and time on page.
+  
+  3. Monitor your website's performance: Monitor your website's performance regularly. Use the dashboard to track your website's performance over time. This will help you identify any trends or patterns that need to be addressed.
+  
+  4. Use the optimization tools: Use the optimization tools in OmniFlow to improve your website's performance. This includes optimizing your images, reducing your server response time, and improving your website's loading speed.
+  
+  5. Use the A/B testing tool: Use the"
