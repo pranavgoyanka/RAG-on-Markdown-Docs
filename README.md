@@ -2,6 +2,8 @@
 
 This project is a prototype for building a RAG system, that can take in proprietary documentation in Markdown format, and use that to fine tune LLM responses.
 
+![Demo](RAG_demo.png)
+
 ## To Dos
 - [x] Build everything as a Web server that accepts documents from the User and allows working on them.
 - [ ] Build a Web UI

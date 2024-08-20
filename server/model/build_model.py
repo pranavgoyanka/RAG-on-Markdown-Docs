@@ -24,13 +24,13 @@ class rag:
         self.prepare_database()
         self.load_llm()
         self.initilised = True
-        log.info("rag init complete!")
+        print("rag init complete!")
 
     def isInitialised(self):
         return self.initilised
 
     def load_data(self):
-        log.info("Loading dataset...")
+        print("Loading dataset...")
         with open(self.file_path, "r") as file:
             data = file.read()
 
@@ -64,7 +64,7 @@ class rag:
 
     # TODO: fix for clean_db = False
     def prepare_database(self, clean_db=True):
-        log.info("Preparing Chroma Client...")
+        print("Preparing Chroma Client...")
 
         self.chroma_client = chromadb.PersistentClient(path=self.db_dir)
 
@@ -92,7 +92,7 @@ class rag:
         )
 
     def load_llm(self):
-        log.info("Loading LLM...")
+        print("Loading LLM...")
         model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
         tokenizer = AutoTokenizer.from_pretrained(model_id)
         lm_model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True)
@@ -143,9 +143,9 @@ class rag:
         if enableRAG:
             ctx_lookup = extract_keywords_tfidf(question)
         ext_prompt, ctxLen = self.generate_extended_prompt(question, ctx_lookup, results_to_use)
-        log.info("Running user query with (enableRAG = " + str(enableRAG) + ")...")
+        print("Running user query with (enableRAG = " + str(enableRAG) + ")...")
         lm_response = self.pipe(ext_prompt)
-        return lm_response[0]["generated_text"][ctxLen : ]
+        return lm_response[0]["generated_text"][len(ext_prompt) : ]
 
 
 def clean_markdown(line):

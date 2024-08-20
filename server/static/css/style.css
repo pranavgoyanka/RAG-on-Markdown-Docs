@@ -14,8 +14,8 @@ h1 {
 #chatLog {
   border: 1px solid #ccc;
   padding: 10px;
-  height: 200px;
-  overflow-y: auto;
+  height: 100%;
+  /* overflow-y: auto; */
 }
 
 #chatInput {

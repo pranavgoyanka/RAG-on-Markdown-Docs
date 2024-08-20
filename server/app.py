@@ -34,7 +34,7 @@ def upload_file():
         return (
             jsonify(
                 {
-                    "message": "File uploaded successfully, preparing LLM...",
+                    "message": "File uploaded successfully!",
                     "file_path": file_path,
                 }
             ),
@@ -48,17 +48,23 @@ def chat():
     # Here you would handle the chat logic. For this example, we'll echo the message back.
     global llm
     global rag_enabled
-    if (llm.isInitialised()):
+    if (llm and llm.isInitialised()):
       response_message = llm.get_llm_response(user_message, enableRAG=rag_enabled)
     else:
-      response_message = "Error, LLM not initialised!"
-    return jsonify({"response": response_message})
+      response_message = "Error, LLM not initialised!" + "rag_enabled " + str(rag_enabled)
+    return jsonify({"response": response_message, "using_rag": rag_enabled})
 
 @app.route('/toggle_rag', methods=['POST'])
 def toggle_rag():
     global rag_enabled
     rag_enabled = not rag_enabled
+    print({"rag_enabled": rag_enabled})
+    return jsonify({"rag_enabled": rag_enabled})
+
+@app.route('/get_rag_status', methods=['GET'])
+def get_rag_status():
+    global rag_enabled
     return jsonify({"rag_enabled": rag_enabled})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8000, debug=True)
